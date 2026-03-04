@@ -16,10 +16,10 @@ def get_my_location():
             
             print(f"✅ Detected: {city} | ISP: {isp}")
 
-            # 2. සිතියම සෑදීම
+            # 2.Make Maps
             my_map = folium.Map(location=[lat, lng], zoom_start=12)
 
-            # 3. Google Satellite View එකතු කිරීම
+            # 3. Google Satellite View 
             folium.TileLayer(
                 tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
                 attr='Google',
@@ -30,7 +30,7 @@ def get_my_location():
             
             folium.TileLayer('openstreetmap', name='Normal View').add_to(my_map)
 
-            # 4. Marker එකක් තැබීම
+            # 4. Put Marker
             folium.Marker(
                 [lat, lng], 
                 popup=f"City: {city}<br>ISP: {isp}",
@@ -38,17 +38,16 @@ def get_my_location():
                 icon=folium.Icon(color='red', icon='info-sign')
             ).add_to(my_map)
 
-            # 5. Fullscreen button එකතු කිරීම
+            # 5. Fullscreen button
             Fullscreen().add_to(my_map)
 
-            # 6. සෙවුම් යන්ත්‍රය (Search Bar) - මෙහිදී Geocoder භාවිතා කර ඇත
-            # මෙය භාවිතා කර ඔබට සූරියවැව (Sooriyawewa) ලෙස search කළ හැක
+            # 6. Search box
             Geocoder().add_to(my_map)
 
-            # Layer Control එකතු කිරීම (Satellite/Normal මාරු කිරීමට)
+            # Add Layer Control
             folium.LayerControl().add_to(my_map)
 
-            # 7. සිතියම Save කිරීම
+            # 7. Save Map
             my_map.save("final_location_map.html")
             print("🚀 Map saved as final_location_map.html")
             
