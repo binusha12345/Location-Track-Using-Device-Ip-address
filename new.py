@@ -4,7 +4,7 @@ from folium.plugins import Fullscreen, Geocoder
 
 def get_my_location():
     try:
-        # 1. IP එක මගින් දත්ත ලබා ගැනීම
+        # 1. GET data from IP 
         response = requests.get('http://ip-api.com/json/')
         data = response.json()
         
